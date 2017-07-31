@@ -107,6 +107,11 @@ $NODE_BINARY "$REACT_NATIVE_DIR/local-cli/cli.js" bundle \
   --bundle-output "$BUNDLE_FILE" \
   --assets-dest "$DEST"
 
+if [ $? -ne 0 ]; then
+    echo "error: could not package $BUNDLE_FILE" >&2
+    exit 1
+fi
+
 # XCode randomly generates user specific workspace files whenever it feels like it.
 # We want these hidden at all times, so go ahead and clean up if they're showing now.
 cd "$SCHEMES_MANAGER_DIR/../.."
