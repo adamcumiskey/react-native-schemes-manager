@@ -17,7 +17,7 @@ function updateProject (project) {
             // Need to add our actual mappings to the project.
 			const configurations = (utilities.getMappings().Debug || []).join('|');
 			const devConfigs = `+(${configurations}${configurations.length ? '|' : ''}Debug)`;
-			const newScript = `"set -e errfail\\nexport NODE_BINARY=node\\nexport DEVELOPMENT_BUILD_CONFIGURATIONS=\\"${devConfigs}\\"\\n(cd ../../; npm run build)\\n../../node_modules/react-native-schemes-manager/lib/react-native-xcode.sh"`;
+			const newScript = `"set -e errfail\\nexport NODE_BINARY=node\\nexport DEVELOPMENT_BUILD_CONFIGURATIONS=\\"${devConfigs}\\"\\n../../node_modules/react-native-schemes-manager/lib/react-native-xcode.sh"`;
 
 			if (step.shellScript === newScript) {
                 // It's already up to date.
